@@ -19,15 +19,28 @@ const nextConfig = {
     return 'pinclimb-build-' + Date.now();
   },
   
-  // Ensure proper static export
-  distDir: 'out',
-  
-  // Disable SWC minifier to avoid native addon issues
+  // Disable SWC minifier to avoid native addon issues in WebContainer
   swcMinify: false,
   
   // Use Babel for transpilation
   experimental: {
     forceSwcTransforms: false,
+  },
+  
+  // Webpack configuration to handle build issues
+  webpack: (config, { isServer }) => {
+    // Fallback for Node.js modules in client-side code
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false,
+        crypto: false,
+      };
+    }
+    
+    return config;
   },
 };
 
