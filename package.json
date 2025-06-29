@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "NEXT_SWC_FORCE_WASM=true next build",
     "start": "next start",
     "lint": "next lint",
     "generate-sitemap": "node scripts/generate-sitemap.js",
