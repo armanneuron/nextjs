@@ -4,9 +4,6 @@ const nextConfig = {
   output: 'export',
   trailingSlash: true,
   
-  // Disable SWC to avoid compilation issues in WebContainer
-  swcMinify: false,
-  
   // Image optimization
   images: {
     unoptimized: true, // Required for static export
