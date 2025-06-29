@@ -11,11 +11,6 @@ const nextConfig = {
     formats: ['image/webp', 'image/avif'],
   },
   
-  // Disable experimental features that might cause issues
-  experimental: {
-    // Remove optimizeCss as it might cause build issues
-  },
-  
   // Compress output
   compress: true,
   
@@ -26,6 +21,14 @@ const nextConfig = {
   
   // Ensure proper static export
   distDir: 'out',
+  
+  // Disable SWC minifier to avoid native addon issues
+  swcMinify: false,
+  
+  // Use Babel for transpilation
+  experimental: {
+    forceSwcTransforms: false,
+  },
 };
 
 module.exports = nextConfig;
