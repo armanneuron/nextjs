@@ -23,36 +23,6 @@ const nextConfig = {
   async generateBuildId() {
     return 'pinclimb-build-' + Date.now();
   },
-  
-  // Redirect configuration for location pages
-  async redirects() {
-    return [
-      // Add any necessary redirects here
-    ];
-  },
-  
-  // Headers for SEO and performance
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-        ],
-      },
-    ];
-  },
 };
 
 module.exports = nextConfig;
